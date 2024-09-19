@@ -30,14 +30,9 @@
 
 2. **Compile and run the application**:
    - Open the project in an IDE such as **IntelliJ IDEA**, **Eclipse**, or **NetBeans**.
-   - Compile the project (if using Maven, run `mvn install`).
-   - Run the application by executing the `MovieBookingSystemGUI.java` file.
-
+   
 3. **Run the program**:
-   ```bash
-   javac MovieBookingSystemGUI.java
-   java MovieBookingSystemGUI
-   ```
+  
 
 ## Usage Guide
 1. **Open the application**: After launching the program, the main window of the system will appear.
@@ -60,7 +55,7 @@
 
 ## Author
 - **OOP_JAVA_PTIT**: Developer of the Movie Booking System.
-- **Email**: 
+- **Email**: dinhhung15082004@gmail.com
 
 ## License
 This project is licensed under the **MIT License**.
