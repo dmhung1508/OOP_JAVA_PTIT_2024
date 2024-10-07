@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "src/movie_system/src/movie"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
