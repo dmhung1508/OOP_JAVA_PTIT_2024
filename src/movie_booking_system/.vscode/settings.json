@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Admin\\Downloads\\json-20240303.jar",
+        "c:\\Users\\Admin\\Downloads\\flatlaf-1.1.jar",
+        "c:\\Users\\Admin\\Downloads\\mongo-java-driver-3.12.14.jar"
+    ]
+}
