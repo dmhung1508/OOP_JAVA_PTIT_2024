@@ -17,6 +17,7 @@ public class Login {
     private JTextField textUsername;
     private JPasswordField textPassword;
     private AccountManager accountManager = new AccountManager();
+    private process_functions pf = new process_functions();
     public Login() 
     {
         this.myFrame = new JFrame("Movie Ticket System");
@@ -139,7 +140,7 @@ public class Login {
 
             
             try {
-                if (accountManager.check_correct(username, password)) 
+                if (accountManager.check_correct(username, password) && pf.check_password(password)) 
                 {
                     
                     if (accountManager.check_admin(username)) 
@@ -156,7 +157,9 @@ public class Login {
                         menu.show_Menu(username);
                         myFrame.dispose();
                     }
-                } else {
+                } 
+                else 
+                {
                     JOptionPane.showMessageDialog(myFrame, "Wrong username or password!");
                 }
             } catch (IOException ex) {
