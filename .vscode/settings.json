@@ -1,6 +1,12 @@
 {
     "java.project.sourcePaths": [
-        "src/movie_system/src/movie"
+        "src/movie_booking_system/src/com/mycompany/UI"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Admin\\Downloads\\json-20240303.jar",
+        "c:\\Users\\Admin\\Downloads\\flatlaf-1.1.jar",
+        "c:\\Users\\Admin\\Downloads\\mongo-java-driver-3.12.14.jar"
+    ]
 }
