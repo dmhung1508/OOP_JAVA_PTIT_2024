@@ -45,6 +45,22 @@ public class AccountManager {
             return true;
         }
     }
+    public boolean updateAccount(String username, String password, String email, String role) {
+        Document query = new Document("username", username);
+        Document account = collection.find(query).first();
+        if (account == null) {
+            System.out.println("Account not found: " + username);
+            return false;
+        } else {
+            Document update = new Document("username", username)
+                            .append("password", password)
+                            .append("email", email)
+                            .append("role", role);
+            collection.replaceOne(query, update);
+            System.out.println("Account updated: " + username);
+            return true;
+        }
+    }
 
 
     public boolean check_correct(String username, String password) {

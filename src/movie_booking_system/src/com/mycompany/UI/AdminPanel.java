@@ -467,13 +467,45 @@ public class AdminPanel extends JFrame {
 
         return buttonPanel;
     }
+    private void saveAccount(JPanel inputPanel, boolean isAdd) {
+        JTextField usernameField = (JTextField) inputPanel.getComponent(1);
+        JPasswordField passwordField = (JPasswordField) inputPanel.getComponent(3);
+        JTextField emailField = (JTextField) inputPanel.getComponent(5);
+        JTextField roleField = (JTextField) inputPanel.getComponent(7);
+
+        if (isAdd) {
+            accountManager.createAccount(usernameField.getText(), new String(passwordField.getPassword()), emailField.getText());
+        } else {
+            accountManager.updateAccount(usernameField.getText(), new String(passwordField.getPassword()), emailField.getText(), roleField.getText());
+        }
+    }
+    private JPanel createAccountButtonPanel(JPanel inputPanel, JDialog dialog, boolean isAdd) {
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton saveButton = createStyledButton("Save", e -> {
+            if (areAccountFieldsValid(inputPanel)) {
+                try {
+                    saveAccount(inputPanel, isAdd);
+                    refreshAccountTable();
+                    dialog.dispose();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(dialog, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        buttonPanel.add(saveButton);
+
+        JButton cancelButton = createStyledButton("Cancel", e -> dialog.dispose());
+        buttonPanel.add(cancelButton);
+
+        return buttonPanel;
+    }
 
     private void showAddAccountDialog() {
         JDialog dialog = createAccountDialog("Add Account", true);
         JPanel inputPanel = createAccountInputPanel();
         dialog.add(inputPanel, BorderLayout.CENTER);
 
-        JPanel buttonPanel = createDialogButtonPanel(inputPanel, dialog, true);
+        JPanel buttonPanel = createAccountButtonPanel(inputPanel, dialog, true);
         dialog.add(buttonPanel, BorderLayout.SOUTH);
         dialog.setVisible(true);
     }
@@ -491,7 +523,7 @@ public class AdminPanel extends JFrame {
 
         populateAccountFields(inputPanel, selectedRow);
 
-        JPanel buttonPanel = createDialogButtonPanel(inputPanel, dialog, false);
+        JPanel buttonPanel = createAccountButtonPanel(inputPanel, dialog, false);
         dialog.add(buttonPanel, BorderLayout.SOUTH);
         dialog.setVisible(true);
     }
