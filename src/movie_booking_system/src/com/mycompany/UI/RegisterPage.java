@@ -81,7 +81,8 @@ public class RegisterPage
                 Account new_account = new Account(text_username.getText(),text_Password.getText() ,text_email.getText() );
                 if(pf.check_is_valid(new_account.getUsername())
                         && pf.check_is_valid(new_account.getEmail())
-                        && pf.check_is_valid(new_account.getPassword()))
+                        && pf.check_is_valid(new_account.getPassword())
+                        && pf.check_password(new_account.getPassword()))
                 {
                     
                     if(!am.check_exit(new_account.getUsername()))
