@@ -20,6 +20,37 @@ public class process_functions
         if(s.trim().length()<1) return false;
         return true;
     }
+    public boolean check_password(String s)
+    {
+        if (s.length() < 8) 
+        {
+            return false;
+        }
+        s = s.toLowerCase();
+        boolean hasLower = false;
+        boolean hasDigit = false;
+        boolean hasWhitespace = false;
+
+        for (int i = 0; i < s.length(); i++) 
+        {
+            char c = s.charAt(i);
+            if (Character.isLowerCase(c)) 
+            {
+                hasLower = true;
+            } 
+            else if (Character.isDigit(c)) 
+            {
+                hasDigit = true;
+            }
+            else if (Character.isWhitespace(c)) 
+            {
+                hasWhitespace = true;
+            }
+        }
+
+        return hasLower && hasDigit && !hasWhitespace;
+    }
+
     public JLabel processing_image(String link, int x, int y, int w, int h)
     {
         ImageIcon movie = new ImageIcon(link);
